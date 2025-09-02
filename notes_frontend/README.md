@@ -1,16 +1,45 @@
-# notes_frontend
+# Notes Frontend (Flutter)
 
-A new Flutter project.
+Minimalistic, light-themed notes application with Supabase sync.
 
-## Getting Started
+Features:
+- View list of notes
+- Create note
+- Edit note
+- Delete note
+- Search notes
+- Local-first with SQLite and Supabase sync
 
-This project is a starting point for a Flutter application.
+Colors:
+- Primary: #1976D2
+- Secondary: #424242
+- Accent: #FFC107
 
-A few resources to get you started if this is your first Flutter project:
+## Quick Start
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1) Install Flutter and dependencies
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2) Set environment variables in `.env`
+   - Copy `.env.example` to `.env` and fill:
+     - SUPABASE_URL
+     - SUPABASE_KEY
+
+3) Ensure Supabase has a `notes` table with columns:
+   - id (uuid, primary key, default uuid_generate_v4())
+   - title (text)
+   - content (text)
+   - created_at (timestamptz, default now())
+   - updated_at (timestamptz, default now())
+   - is_deleted (boolean, default false)
+
+4) Run
+```
+flutter pub get
+flutter run
+```
+
+Sync Notes:
+- Pull-to-refresh or tap the sync icon in the top AppBar.
+- Local changes queue automatically and are pushed on next sync.
+
+See `assets/supabase.md` for more details.
